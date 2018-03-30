@@ -37,7 +37,7 @@ public class Signup extends Activity {
                 User u = new User(stremail, strpword, strphone);
                 helper.insertUser(u);
 
-                Intent i = new Intent(Signup.this, home);
+                Intent i = new Intent(Signup.this, home.class);
                 startActivity(i);
             }else{
 
@@ -46,7 +46,7 @@ public class Signup extends Activity {
         }
 
         if(v.getId() == R.id.bCancel){
-            Intent i = new Intent(Signup.this, home);
+            Intent i = new Intent(Signup.this, home.class);
             startActivity(i);
         }
     }

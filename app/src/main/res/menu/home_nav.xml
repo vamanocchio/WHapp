@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:title="Shopping List"
+        android:icon="@drawable/ic_shop"
+        />
+
+    <item
+        android:title="Inventory"
+        android:icon="@drawable/ic_inv"
+        />
+
+    <item
+        android:title="Add"
+        android:icon="@drawable/ic_add"
+        />
+
+    <item
+        android:title="Warehouses"
+        android:icon="@drawable/ic_wh"
+        />
+
+    <item
+        android:title="Settings"
+        android:icon="@drawable/ic_set"
+        />
+
+</menu>

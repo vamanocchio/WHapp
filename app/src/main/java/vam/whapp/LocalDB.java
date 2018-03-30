@@ -47,7 +47,7 @@ public class LocalDB extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    private void insertUser(User u){
+    void insertUser(User u){
 
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
