@@ -13,5 +13,7 @@ public class Shopping extends Activity{
             super.onCreate(savedInstanceState);
             setContentView(R.layout.shopping);
         }
+
+        //list view too
 }
 
