@@ -10,6 +10,7 @@ public class Item {
     private String exp;
     private String loc;
     private String notes;
+    //price
     //item id if nec.
 
     public Item(String name, String exp, String loc, String notes){
