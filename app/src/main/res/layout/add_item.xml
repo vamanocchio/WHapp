@@ -80,6 +80,7 @@
         android:id="@+id/bAddConfirm"
         android:layout_width="146dp"
         android:layout_height="87dp"
+        android:onClick="onAddInvClick"
         android:text="Add"
         tools:layout_editor_absoluteX="196dp"
         tools:layout_editor_absoluteY="474dp" />

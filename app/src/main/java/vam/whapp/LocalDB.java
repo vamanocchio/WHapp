@@ -18,14 +18,14 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String TABLE_INV = "inventory";
     private static final String COLUMN_ITEM = "item";
     private static final String COLUMN_EXP = "exp";
-    //price
+    private static final String COLUMN_PRICE = "price";
     private static final String COLUMN_LOC = "location";
     private static final String COLUMN_NOTES = "notes";
 
     private static final String TABLE_LU = "lookup";
     private static final String COLUMN_LUITEM = "lu_item";
     private static final String COLUMN_LUEXP = "lu_exp";
-    //price
+    private static final String COLUMN_LUPRICE = "lu_price";
     private static final String COLUMN_LULOC = "lu_location";
     private static final String COLUMN_LUNOTES = "lu_notes";
 
@@ -68,6 +68,7 @@ public class LocalDB extends SQLiteOpenHelper{
         ContentValues values = new ContentValues();
         values.put(COLUMN_ITEM, i.getName());
         values.put(COLUMN_EXP, i.getExp());
+        values.put(COLUMN_PRICE, i.getPrice());
         values.put(COLUMN_LOC, i.getLoc());
         values.put(COLUMN_NOTES, i.getNotes());
 

@@ -8,14 +8,15 @@ public class Item {
 
     private String name;
     private String exp;
+    private String price;
     private String loc;
     private String notes;
-    //price
     //item id if nec.
 
-    public Item(String name, String exp, String loc, String notes){
+    public Item(String name, String exp, String price, String loc, String notes){
         this.name = name;
         this.exp = exp;
+        this.price = price;
         this.loc = loc;
         this.notes = notes;
     }
@@ -27,6 +28,8 @@ public class Item {
     String getExp(){
         return this.exp;
     }
+
+    String getPrice(){ return this.price; }
 
     String getLoc(){
         return this.loc;
