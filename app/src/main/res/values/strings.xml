@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">WHapp</string>
+
+    <string name="item_hint" > Item </string>
+    <string name="exp_hint" > Exp </string>
+    <string name="price_hint" > Price </string>
+    <string name="loc_hint" > Location </string>
+    <string name="notes_hint" > Item Notes </string>
+
 </resources>

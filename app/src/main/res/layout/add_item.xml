@@ -1,95 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <EditText
         android:id="@+id/TFaddItem"
-        android:layout_width="299dp"
+        android:layout_width="match_parent"
         android:layout_height="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+
+        android:hint="@string/item_hint"
+        android:paddingLeft="10dp"
+
         android:background="@drawable/round_border"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:text="Item"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="37dp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/TFaddExp"
-        android:layout_width="137dp"
+        android:layout_width="155dp"
         android:layout_height="73dp"
-        android:layout_marginEnd="28dp"
-        android:layout_marginTop="8dp"
+        android:layout_below="@id/TFaddItem"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+
+        android:hint="@string/item_hint"
+        android:paddingLeft="10dp"
+
         android:background="@drawable/round_border"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:text="Exp Date"
-        app:layout_constraintBottom_toBottomOf="@+id/TFaddPrice"
-        app:layout_constraintEnd_toStartOf="@+id/TFaddPrice"
-        app:layout_constraintTop_toTopOf="@+id/TFaddPrice"
-        app:layout_constraintVertical_bias="1.0" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/TFaddPrice"
-        android:layout_width="133dp"
-        android:layout_height="73dp"
-        android:ems="10"
-        android:inputType="textPersonName"
         android:text="Price"
-        android:background="@drawable/round_border"
+        android:layout_width="155dp"
+        android:layout_height="73dp"
+        android:layout_below="@id/TFaddItem"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+
+        android:hint="@string/item_hint"
         android:paddingLeft="10dp"
-        tools:layout_editor_absoluteX="209dp"
-        tools:layout_editor_absoluteY="135dp" />
+
+        android:background="@drawable/round_border"
+        android:ems="10"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/TFaddLoc"
-        android:layout_width="299dp"
+        android:text="Location"
+        android:layout_width="match_parent"
         android:layout_height="73dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
+        android:layout_below="@id/TFaddExp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+
+        android:hint="@string/item_hint"
+        android:paddingLeft="10dp"
+
         android:background="@drawable/round_border"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:text="Location"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="235dp" />
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/TFaddNotes"
-        android:layout_width="299dp"
-        android:layout_height="134dp"
+        android:text="Notes"
+        android:layout_width="match_parent"
+        android:layout_height="175dp"
+        android:layout_below="@id/TFaddLoc"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+
+        android:hint="@string/item_hint"
+        android:paddingLeft="10dp"
+
         android:background="@drawable/round_border"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        android:text="Notes"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="334dp" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/bAddConfirm"
-        android:layout_width="146dp"
-        android:layout_height="87dp"
-        android:onClick="onAddInvClick"
         android:text="Add"
-        tools:layout_editor_absoluteX="196dp"
-        tools:layout_editor_absoluteY="474dp" />
+        android:layout_width="155dp"
+        android:layout_height="73dp"
+        android:layout_below="@id/TFaddNotes"
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="10dp"
+
+        android:onClick="onAddInvClick" />
 
     <Button
         android:id="@+id/bAddCancel"
-        android:layout_width="147dp"
-        android:layout_height="87dp"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="43dp"
-        tools:layout_editor_absoluteY="474dp" />
-</android.support.constraint.ConstraintLayout>
+        android:layout_width="155dp"
+        android:layout_height="73dp"
+        android:layout_below="@id/TFaddNotes"
+        android:layout_alignParentRight="true"
+
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="10dp"
+
+        android:onClick="onAddInvClick" />
+</RelativeLayout>

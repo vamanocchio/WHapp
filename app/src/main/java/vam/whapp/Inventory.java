@@ -27,6 +27,7 @@ public class Inventory extends Activity{
 //    private Dialog MyDialog;
 //    Button hello,close;
     LocalDB db;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +35,7 @@ public class Inventory extends Activity{
         setContentView(R.layout.inventory);
 
 
-        ListView listView = (ListView) findViewById(R.id.InvList);
+        listView = (ListView) findViewById(R.id.InvList);
         arrayList = new ArrayList<String>();
         adapter = new ArrayAdapter<String>(this, R.layout.inv_list, R.id.itemTxt, arrayList);
 
@@ -45,6 +46,10 @@ public class Inventory extends Activity{
 
             @Override
             public void onClick(View view) {
+
+                setContentView(R.layout.add_item);
+
+
 //                String newItem = editTxt.getText().toString();
   //              arrayList.add(newItem);
     //            adapter.notifyDataSetChanged();
@@ -99,7 +104,8 @@ public class Inventory extends Activity{
 
     void addInv(){
 
-        setContentView(R.layout.add_item);
+
+
 
 
 
@@ -142,6 +148,8 @@ public class Inventory extends Activity{
 
             arrayList.add(item_str);
             adapter.notifyDataSetChanged();
+
+            setContentView(R.layout.inventory);
 
         }
 
