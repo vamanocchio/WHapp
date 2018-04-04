@@ -3,8 +3,11 @@ package vam.whapp;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 /**
  * Created by resnet on 3/28/18.
@@ -41,9 +44,12 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String COLUMN_PHONE = "phone";
     SQLiteDatabase db;
 
-    private static final String TABLE_CREATE = "create table inventory (item text not null, exp text not null, location text not null)," +
-            " create table lookup, create table warehouses (id text not null, owner text not null)," +
-            " create table user (username text not null, password text not null, email text not null, phone text not null)";
+    private static final String CREATE_TABLE_ITEM = "create table inventory (item text not null, exp text not null, price text not null, location text not null)" ;
+    private static final String CREATE_TABLE_LU = "create table lookup (item text not null, exp text not null, price text not null, location text not null)";
+
+    private static final String CREATE_TABLE_WH = "create table warehouses (id text not null, owner text not null)";
+
+    private static final String CREATE_TABLE_USER = "create table user (username text not null, password text not null, email text not null, phone text not null)";
 
     public LocalDB(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -76,7 +82,24 @@ public class LocalDB extends SQLiteOpenHelper{
         db.close();
     }
 
+    ArrayList<String> getInv(){
+        ArrayList<String> list = new ArrayList<String>();
 
+        db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select item from " + TABLE_INV, null);
+
+        if(c!=null){
+            if(c.moveToFirst()){
+                do{
+                    String item = c.getString(c.getColumnIndex("item"));
+                    list.add(item);
+
+                }while(c.moveToNext());
+            }
+        }
+        db.close();
+        return list;
+    }
 
 
 
@@ -84,7 +107,10 @@ public class LocalDB extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(TABLE_CREATE);
+        db.execSQL(CREATE_TABLE_ITEM);
+        db.execSQL(CREATE_TABLE_LU);
+        db.execSQL(CREATE_TABLE_WH);
+        db.execSQL(CREATE_TABLE_USER);
         this.db = db;
     }
 
