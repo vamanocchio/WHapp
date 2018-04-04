@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,6 +38,7 @@ public class Inventory extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inventory);
 
+        Log.d("InvTag", "In inventory, congrats");
 
         listView = (ListView) findViewById(R.id.InvList);
         arrayList = db.getInv();

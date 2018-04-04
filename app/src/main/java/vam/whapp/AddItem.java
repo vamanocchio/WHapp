@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -53,11 +54,13 @@ public class AddItem extends Activity {
                 Toast popup = Toast.makeText(this, "Must enter item location", Toast.LENGTH_LONG);
                 popup.show();
             }else{*/
+          System.out.print(item_str + " " + exp_str + " " + price_str + " " + loc_str + " " + notes_str);
                 Item new_item = new Item(item_str, exp_str, price_str, loc_str, notes_str);
+                Log.d("ItemTag", "new_item.getName() + \" \" + new_item.getExp() + \" \" + new_item.getPrice() + \" \" + new_item.getLoc() + \" \" + new_item.getNotes()");
                 db.insertItem(new_item);
  //           }
         Intent i = new Intent(AddItem.this, Inventory.class);
-        i.putExtra("Item", item_str);
+ //       i.putExtra("Item", item_str);
         startActivity(i);
 
     }
