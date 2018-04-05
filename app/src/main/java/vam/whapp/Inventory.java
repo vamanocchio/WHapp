@@ -68,11 +68,6 @@ public class Inventory extends Activity{
                 startActivity(i);
 
 
-//                String newItem = editTxt.getText().toString();
-  //              arrayList.add(newItem);
-    //            adapter.notifyDataSetChanged();
-
-
             }
         });
 
@@ -86,11 +81,6 @@ public class Inventory extends Activity{
         });
 
     }
-
- /*   void popLV(){
-
-        ArrayList<String> list = db.getInv();
-    }*/
 
 
 }

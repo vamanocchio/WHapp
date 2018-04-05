@@ -17,7 +17,7 @@ public class Signup extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.signup);
     }
 
     void onSignupClick(View v){
@@ -49,7 +49,7 @@ public class Signup extends Activity {
         }
 
         if(v.getId() == R.id.bCancel){
-            Intent i = new Intent(Signup.this, home.class);
+            Intent i = new Intent(Signup.this, Welcome.class);
             startActivity(i);
         }
     }

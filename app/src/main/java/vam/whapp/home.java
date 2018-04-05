@@ -24,7 +24,7 @@ public class home extends AppCompatActivity {
                 Intent i;
                 switch(item.getItemId()){
                     case R.id.action_add:
-                        i = new Intent(home.this, Inventory.class);
+                        i = new Intent(home.this, AddItem.class);
                         //putExtra
                         startActivity(i);
                         return true;
