@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * Created by victoria on 3/29/18.
@@ -41,6 +42,8 @@ public class Signup extends Activity {
                 startActivity(i);
             }else{
 
+                Toast popup = Toast.makeText(this, "Passwords did not match", Toast.LENGTH_LONG);
+                popup.show();
                 //pop up: Passwords don't match
             }
         }

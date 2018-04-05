@@ -39,10 +39,10 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String COLUMN_MEMBERS = "members";
 
     private static final String TABLE_USER = "user";
-    private static final String COLUMN_UNAME = "username";  //Replaced by email?
-    private static final String COLUMN_PWORD = "password";
     private static final String COLUMN_EMAIL = "email";
+    private static final String COLUMN_PWORD = "password";
     private static final String COLUMN_PHONE = "phone";
+
     SQLiteDatabase db;
 
     private static final String CREATE_TABLE_ITEM = "create table inventory (item text primary key not null, exp text not null, price text not null, location text not null, notes text)" ;
@@ -51,7 +51,7 @@ public class LocalDB extends SQLiteOpenHelper{
 
     private static final String CREATE_TABLE_WH = "create table warehouses (id text primary key not null, owner text not null, members text)";
 
-    private static final String CREATE_TABLE_USER = "create table user (username text primary key not null, password text not null, email text not null, phone text not null)";
+    private static final String CREATE_TABLE_USER = "create table user (email text primary key not null, password text not null, phone text not null)";
 
 
 
@@ -68,7 +68,7 @@ public class LocalDB extends SQLiteOpenHelper{
         values.put(COLUMN_EMAIL, u.getEmail());
         values.put(COLUMN_PWORD, u.getPword());
         values.put(COLUMN_PHONE, u.getPhone());
-        values.put(COLUMN_ID, u.getId());
+//        values.put(COLUMN_ID, u.getId());
 
         db.insert(TABLE_USER, null, values);
         db.close();
@@ -111,6 +111,25 @@ public class LocalDB extends SQLiteOpenHelper{
         }
         db.close();
         return list;
+    }
+
+    boolean isUser(String email, String pword){
+
+        db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select email, password from " + TABLE_USER, null);
+
+        if(c!=null){
+            if(c.moveToFirst()){
+                do{
+                    if(c.getString(0).equals(email)){
+                        if(c.getString(1).equals(pword)) {
+                            return true;
+                        }else{ return false; }
+                    }
+                }while(c.moveToNext());
+            }
+        }
+        return false;
     }
 
 

@@ -76,6 +76,15 @@ public class Inventory extends Activity{
             }
         });
 
+        Button btnreturn = (Button)findViewById(R.id.bInvReturn);
+        btnreturn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(Inventory.this, home.class);
+                startActivity(i);
+            }
+        });
+
     }
 
  /*   void popLV(){

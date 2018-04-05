@@ -9,19 +9,19 @@ public class User {
     private String email;
     private String pword;
     private String phone;
-    private long id;
+//    private long id;
 
     public User(String email, String pword, String phone){
         this.email = email;
         this.pword = pword;
         this.phone = phone;
-        this.id = genId();
+//        this.id = genId(); //for later -> user identification in server
     }
 
-    private long genId(){
+ /*   private long genId(){
         long id = 69;//formula to generate id
         return id;
-    }
+    }*/
 
     String getEmail(){
         return this.email;
@@ -35,13 +35,13 @@ public class User {
         return this.phone;
     }
 
-    long getId(){
+ /*   long getId(){
         return this.id;
     }
+*/
 
 
-
-    //for later
+    //for later -> User Settings
 
     private void setPword(String newpword){
         this.pword = newpword;

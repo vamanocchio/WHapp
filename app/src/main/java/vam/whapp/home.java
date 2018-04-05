@@ -52,35 +52,4 @@ public class home extends AppCompatActivity {
 
     }
 
-
-
-
-    void onHomeClick(View v){
-
-        if(v.getId() == R.id.bShopping){
-            Intent i = new Intent(home.this, Shopping.class);
-            startActivity(i);
-        }
-
-        if(v.getId() == R.id.bInventory){
-            Intent i = new Intent(home.this, Inventory.class);
-            startActivity(i);
-        }
-
-        if(v.getId() == R.id.bAdd){
-            Intent i = new Intent(home.this, Inventory.class);
-            //putExtra
-            startActivity(i);
-        }
-
-        if(v.getId() == R.id.bWM){
-            Intent i = new Intent(home.this, WM.class);
-            startActivity(i);
-        }
-
-        if(v.getId() == R.id.bSettings){
-            Intent i = new Intent(home.this, Settings.class);
-            startActivity(i);
-        }
-    }
 }

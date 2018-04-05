@@ -1,141 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="vam.whapp.home">
 
-    <EditText
-        android:id="@+id/TFnote1"
-        android:layout_width="335dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/TFnote2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bAdd"
-        android:layout_width="66dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="92dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="onHomeClick"
-        android:text="Add"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bWM"
-        app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toEndOf="@+id/bInventory" />
-
-    <Button
-        android:id="@+id/bShopping"
-        android:layout_width="66dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="92dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:onClick="onHomeClick"
-        android:text="Shopping"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/bInventory"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <Button
-        android:id="@+id/bWM"
-        android:layout_width="66dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onHomeClick"
-        android:text="WM"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="234dp" />
-
-    <Button
-        android:id="@+id/bSettings"
-        android:layout_width="66dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="92dp"
-        android:layout_marginEnd="8dp"
-        android:onClick="onHomeClick"
-        android:text="Settings"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/bWM" />
-
-    <Button
-        android:id="@+id/bInventory"
-        android:layout_width="66dp"
-        android:layout_height="55dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="onHomeClick"
-        android:text="Inventory"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="78dp" />
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="182dp"
-        android:layout_height="52dp"
-        android:text="You are in "
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+
+        android:textSize="24dp"
+        android:text="You are in " />
 
     <EditText
         android:id="@+id/TFpantrydisplay"
-        android:layout_width="137dp"
-        android:layout_height="51dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="206dp"
-        tools:layout_editor_absoluteY="17dp" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
 
-    <EditText
-        android:id="@+id/TFnote2"
-        android:layout_width="335dp"
-        android:layout_height="77dp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/transparent"
+        android:layout_toRightOf="@+id/textView"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/TFnote3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <EditText
-        android:id="@+id/TFnote3"
-        android:layout_width="335dp"
-        android:layout_height="77dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@android:color/transparent"
-        android:ems="10"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="294dp" />
+        android:text="Sample Warehouse"
+        android:textSize="24dp" />
 
     <android.support.design.widget.BottomNavigationView
         xmlns:design="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/NavBot"
-        android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         design:menu="@menu/home_nav"
 
         />
 
-</android.support.design.widget.CoordinatorLayout>
+</RelativeLayout>
