@@ -16,7 +16,7 @@ import android.widget.Toast;
 
 public class AddItem extends Activity {
 
-    LocalDB db;
+    LocalDB db = new LocalDB(this);
     String item_str;
 
     @Override
@@ -54,9 +54,12 @@ public class AddItem extends Activity {
                 Toast popup = Toast.makeText(this, "Must enter item location", Toast.LENGTH_LONG);
                 popup.show();
             }else{*/
-          System.out.print(item_str + " " + exp_str + " " + price_str + " " + loc_str + " " + notes_str);
+          String output = (item_str + " " + exp_str + " " + price_str + " " + loc_str + " " + notes_str);
                 Item new_item = new Item(item_str, exp_str, price_str, loc_str, notes_str);
-                Log.d("ItemTag", "new_item.getName() + \" \" + new_item.getExp() + \" \" + new_item.getPrice() + \" \" + new_item.getLoc() + \" \" + new_item.getNotes()");
+                Log.d("ItemTag", output);
+                if(new_item == null){
+                    Log.d("NullTag", "Item is null");
+                }
                 db.insertItem(new_item);
  //           }
         Intent i = new Intent(AddItem.this, Inventory.class);

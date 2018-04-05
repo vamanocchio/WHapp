@@ -44,6 +44,7 @@ public class Inventory extends Activity{
         arrayList = db.getInv();
         adapter = new ArrayAdapter<String>(this, R.layout.inv_list, R.id.itemTxt, arrayList);
 
+
         listView.setAdapter(adapter);
 
 /*

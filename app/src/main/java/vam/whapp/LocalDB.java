@@ -6,6 +6,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -44,16 +45,21 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String COLUMN_PHONE = "phone";
     SQLiteDatabase db;
 
-    private static final String CREATE_TABLE_ITEM = "create table inventory (item text not null, exp text not null, price text not null, location text not null)" ;
-    private static final String CREATE_TABLE_LU = "create table lookup (item text not null, exp text not null, price text not null, location text not null)";
+    private static final String CREATE_TABLE_ITEM = "create table inventory (item text primary key not null, exp text not null, price text not null, location text not null, notes text)" ;
 
-    private static final String CREATE_TABLE_WH = "create table warehouses (id text not null, owner text not null)";
+    private static final String CREATE_TABLE_LU = "create table lookup (item text primary key not null, exp text not null, price text not null, location text not null, notes text)";
 
-    private static final String CREATE_TABLE_USER = "create table user (username text not null, password text not null, email text not null, phone text not null)";
+    private static final String CREATE_TABLE_WH = "create table warehouses (id text primary key not null, owner text not null, members text)";
+
+    private static final String CREATE_TABLE_USER = "create table user (username text primary key not null, password text not null, email text not null, phone text not null)";
+
+
 
     public LocalDB(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
+
+
 
     void insertUser(User u){
 
@@ -68,7 +74,12 @@ public class LocalDB extends SQLiteOpenHelper{
         db.close();
     }
 
+
     void insertItem(Item i){
+
+        Log.d("InDB", "In DB, congrats");
+        String output = (i.getName() + " " + i.getExp() + " " + i.getPrice() + " " + i.getLoc() + " " + i.getNotes());
+        Log.d("DBTag", output);
 
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -81,6 +92,7 @@ public class LocalDB extends SQLiteOpenHelper{
         db.insert(TABLE_INV, null, values);
         db.close();
     }
+
 
     ArrayList<String> getInv(){
         ArrayList<String> list = new ArrayList<String>();
