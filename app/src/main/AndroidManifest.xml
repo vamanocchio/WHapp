@@ -25,6 +25,14 @@
         <activity android:name=".AddShop"/>
         <activity android:name=".Signup"/>
 
+        <activity android:name=".NotificationView"
+            android:label="Details of WM notification"
+            android:parentActivityName=".home">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".home"/>
+        </activity>
+
     </application>
 
 </manifest>
