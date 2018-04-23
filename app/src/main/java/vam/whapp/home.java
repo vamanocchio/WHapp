@@ -1,17 +1,16 @@
 package vam.whapp;
 
-import android.app.NotificationManager;
+import android.app.AlarmManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
+
+import java.util.Calendar;
 
 public class home extends AppCompatActivity {
 
@@ -22,12 +21,20 @@ public class home extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+//        //ALARM MANAGER
+//        Calendar cal = Calendar.getInstance();
+//        cal.set(Calendar.HOUR_OF_DAY, 12);
+//        cal.set(Calendar.MINUTE, 30);
+//        Intent intent1 = new Intent(home.this, NotifcationReceiver.class);
+//        PendingIntent pen = PendingIntent.getBroadcast(home.this, 0, intent1, PendingIntent.FLAG_UPDATE_CURRENT);
+//        AlarmManager am = (AlarmManager) home.this.getSystemService(home.this.ALARM_SERVICE);
+//        am.setInexactRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pen);
+
+        //NAV BAR
         navBot = (BottomNavigationView)findViewById(R.id.NavBot);
         navBot.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-
                 Intent i;
                 switch(item.getItemId()){
                     case R.id.action_add:
@@ -57,31 +64,6 @@ public class home extends AppCompatActivity {
             }
         });
 
-
-        Button b1 = (Button)findViewById(R.id.bNotif);
-        b1.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v){
-                addNotification();
-            }
-        });
-
-    }
-
-    private void addNotification(){
-
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.ic_bell)
-                .setContentTitle("WH Notification")
-                .setContentText("Testing notifications");
-
-        Intent notifIntent = new Intent(this, home.class);
-        PendingIntent contentIntent = PendingIntent.getActivity(this, 0, notifIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-        builder.setContentIntent(contentIntent);
-
-        NotificationManager manager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        manager.notify(0, builder.build());
     }
 
 }

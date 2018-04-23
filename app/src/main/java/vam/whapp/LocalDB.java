@@ -20,6 +20,7 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String DATABASE_NAME = "localuser.db";
 
     private static final String TABLE_INV = "inventory";
+    private static final String COLUMN_ID = "id";
     private static final String COLUMN_ITEM = "item";
     private static final String COLUMN_EXP = "exp";
     private static final String COLUMN_PRICE = "price";
@@ -34,7 +35,9 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String COLUMN_LUNOTES = "lu_notes";
 
     private static final String TABLE_WH = "warehouses";
-    private static final String COLUMN_ID = "id";
+    private static final String COLUMN_WH_ID = "wh_id";
+    private static final String COLUMN_TITLE = "title";
+    private static final String COLUMN_INV_ID = "inv_id";
     private static final String COLUMN_OWNER = "owner";
     private static final String COLUMN_MEMBERS = "members";
 
@@ -45,11 +48,11 @@ public class LocalDB extends SQLiteOpenHelper{
 
     SQLiteDatabase db;
 
-    private static final String CREATE_TABLE_ITEM = "create table inventory (item text primary key not null, exp text not null, price text not null, location text not null, notes text)" ;
+    private static final String CREATE_TABLE_ITEM = "create table inventory (id text primary key unique not null, item text not null, exp text not null, price text not null, location text not null, notes text)" ;
 
     private static final String CREATE_TABLE_LU = "create table lookup (item text primary key not null, exp text not null, price text not null, location text not null, notes text)";
 
-    private static final String CREATE_TABLE_WH = "create table warehouses (id text primary key not null, owner text not null, members text)";
+    private static final String CREATE_TABLE_WH = "create table warehouses (wh_id text primary key not null, title text not null, inv_id text FOREIGN KEY not null, owner text not null, members text)";
 
     private static final String CREATE_TABLE_USER = "create table user (email text primary key not null, password text not null, phone text not null)";
 
@@ -106,6 +109,24 @@ public class LocalDB extends SQLiteOpenHelper{
                     String item = c.getString(c.getColumnIndex("item"));
                     list.add(item);
 
+                }while(c.moveToNext());
+            }
+        }
+        db.close();
+        return list;
+    }
+
+    ArrayList<String> getWH(){
+        ArrayList<String> list = new ArrayList<String>();
+
+        db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select title from " + TABLE_WH, null);
+
+        if(c!=null){
+            if(c.moveToFirst()){
+                do{
+                    String item = c.getString(c.getColumnIndex("title"));
+                    list.add(item);
                 }while(c.moveToNext());
             }
         }
