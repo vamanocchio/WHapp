@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,7 @@ public class LocalDB extends SQLiteOpenHelper{
 
 
 
+    //USER
     void insertUser(User u){
 
         db = this.getWritableDatabase();
@@ -77,7 +79,27 @@ public class LocalDB extends SQLiteOpenHelper{
         db.close();
     }
 
+    boolean isUser(String email, String pword){
 
+        db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("select email, password from " + TABLE_USER, null);
+
+        if(c!=null){
+            if(c.moveToFirst()){
+                do{
+                    if(c.getString(0).equals(email)){
+                        if(c.getString(1).equals(pword)) {
+                            return true;
+                        }else{ return false; }
+                    }
+                }while(c.moveToNext());
+            }
+        }
+        return false;
+    }
+
+
+    //INVENTORY
     void insertItem(Item i){
 
         Log.d("InDB", "In DB, congrats");
@@ -116,6 +138,7 @@ public class LocalDB extends SQLiteOpenHelper{
         return list;
     }
 
+    //WAREHOUSE
     ArrayList<String> getWH(){
         ArrayList<String> list = new ArrayList<String>();
 
@@ -134,23 +157,19 @@ public class LocalDB extends SQLiteOpenHelper{
         return list;
     }
 
-    boolean isUser(String email, String pword){
-
+    String getWH_ID(String title_str){
         db = this.getWritableDatabase();
-        Cursor c = db.rawQuery("select email, password from " + TABLE_USER, null);
+        Cursor c_title = db.rawQuery("select title from " + TABLE_WH, null);
+        Cursor c_id = db.rawQuery("select wh_id from " + TABLE_WH, null);
 
-        if(c!=null){
-            if(c.moveToFirst()){
+        if(c_title!=null){
+            if(c_title.moveToFirst() && c_id.moveToFirst()){
                 do{
-                    if(c.getString(0).equals(email)){
-                        if(c.getString(1).equals(pword)) {
-                            return true;
-                        }else{ return false; }
-                    }
-                }while(c.moveToNext());
+                    //if title == title
+                    return c_id.getString(c_id.getColumnIndex("wh_id"));
+                }while(c_title.moveToNext() && c_id.moveToNext());
             }
         }
-        return false;
     }
 
 
