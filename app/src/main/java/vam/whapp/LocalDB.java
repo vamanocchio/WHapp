@@ -7,7 +7,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-import android.view.View;
 
 import java.util.ArrayList;
 
@@ -160,16 +159,17 @@ public class LocalDB extends SQLiteOpenHelper{
     String getWH_ID(String title_str){
         db = this.getWritableDatabase();
         Cursor c_title = db.rawQuery("select title from " + TABLE_WH, null);
-        Cursor c_id = db.rawQuery("select wh_id from " + TABLE_WH, null);
 
         if(c_title!=null){
-            if(c_title.moveToFirst() && c_id.moveToFirst()){
+            if(c_title.moveToFirst()){
                 do{
                     //if title == title
-                    return c_id.getString(c_id.getColumnIndex("wh_id"));
-                }while(c_title.moveToNext() && c_id.moveToNext());
+                    if(c_title.getString(1).equals(title_str))
+                        return c_title.getString(0);
+                }while(c_title.moveToNext());
             }
         }
+        return title_str;
     }
 
 
