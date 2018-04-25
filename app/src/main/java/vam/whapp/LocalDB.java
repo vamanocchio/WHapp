@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
+import java.sql.ResultSet;
 import java.util.ArrayList;
 
 /**
@@ -63,8 +64,11 @@ public class LocalDB extends SQLiteOpenHelper{
     }
 
 
-
-    //USER
+    //---------------------------------------------------------------------
+    //
+    //                              USER
+    //
+    //---------------------------------------------------------------------
     void insertUser(User u){
 
         db = this.getWritableDatabase();
@@ -97,8 +101,11 @@ public class LocalDB extends SQLiteOpenHelper{
         return false;
     }
 
-
-    //INVENTORY
+    //---------------------------------------------------------------------
+    //
+    //                              INVENTORY
+    //
+    //---------------------------------------------------------------------
     void insertItem(Item i){
 
         Log.d("InDB", "In DB, congrats");
@@ -137,8 +144,12 @@ public class LocalDB extends SQLiteOpenHelper{
         return list;
     }
 
-    //WAREHOUSE
-    ArrayList<String> getWH(){
+    //---------------------------------------------------------------------
+    //
+    //                              WAREHOUSE
+    //
+    //---------------------------------------------------------------------
+    ArrayList<String> getWarehouses(){
         ArrayList<String> list = new ArrayList<String>();
 
         db = this.getWritableDatabase();
@@ -170,6 +181,11 @@ public class LocalDB extends SQLiteOpenHelper{
             }
         }
         return title_str;
+    }
+
+    ResultSet getWH(String id_str){
+        db = this.getWritableDatabase();
+        Cursor c = db.rawQuery("SELECT ")
     }
 
 

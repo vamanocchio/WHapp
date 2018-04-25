@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.NotificationCompat;
 
+<<<<<<< Updated upstream
 import java.util.ArrayList;
 
 /**
@@ -34,6 +35,24 @@ public class NotificationReceiver extends BroadcastReceiver{
 //                .setAutoCancel(true).setWhen(when)
 //                .setContentIntent(pen); //***WHERE THE NOTIFICATION TAKES YOU WHEN PRESSED
 //        notif_man.notify(0, mNotifyBuilder.build());
+=======
+/**
+ * Created by Victoria on 4/20/2018.
+ */
+
+public class NotificationReceiver extends BroadcastReceiver {
+    @Override
+    public void onReceive(Context context, Intent intent) {
+
+        long when = System.currentTimeMillis();
+        NotificationManager nm = (NotificationManager) context.getSystemService(context.NOTIFICATION_SERVICE);
+
+        Intent notifIntent = new Intent(context, home.class);
+        notifIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
+        PendingIntent pi = PendingIntent.getActivity(context, 0, notifIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+>>>>>>> Stashed changes
 
     }
 }

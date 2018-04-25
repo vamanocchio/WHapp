@@ -3,6 +3,7 @@ package vam.whapp;
 import android.app.Activity;
 import android.app.DownloadManager;
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -34,7 +35,7 @@ class WH extends Activity{
         setContentView(R.layout.wh);
 
         listView = (ListView) findViewById(R.id.InvList);
-        arrayList = db.getWH();
+        arrayList = db.getWarehouses();
         adapter = new ArrayAdapter<String>(this, R.layout.inv_list, R.id.itemTxt, arrayList);
 
 
@@ -82,9 +83,11 @@ class ViewWH extends Activity{
         wh_id = (TextView)findViewById(R.id.TV_ID);
         mem_list = (ListView)findViewById(R.id.LV_WHList);
 
+        //Cursor c = db.rawQuery("SELECT title FROM " + TABLE_WH + " WHERE id=id_str", null);
+        String query = "SELECT title FROM warehouses WHERE id=id_str";
+        Cursor c = db.rawQuery(query, null);
         //SELECT title FROM WH WHERE Id=id_str;
         //w3schools
-
 
     }
 
