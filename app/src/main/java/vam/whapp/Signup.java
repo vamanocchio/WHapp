@@ -35,7 +35,8 @@ public class Signup extends Activity {
                 String strpword = pword.getText().toString();
                 String strphone = phone.getText().toString();
 
-                User u = new User(stremail, strpword, strphone);
+                User u = new User(stremail, strphone);
+                u.setPword(strpword);
                 helper.insertUser(u);
 
                 Intent i = new Intent(Signup.this, home.class);

@@ -186,6 +186,8 @@ public class LocalDB extends SQLiteOpenHelper{
     ResultSet getWH(String id_str){
         db = this.getWritableDatabase();
         Cursor c = db.rawQuery("SELECT ")
+
+
     }
 
 
