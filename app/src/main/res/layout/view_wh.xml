@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/TV_WH"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+
+        android:hint="Pantry Name"
+        android:paddingLeft="10dp"
+        android:textSize="22dp"
+        android:gravity="center"
+
+        android:background="@drawable/round_border"/>
+
+    <ListView
+        android:id="@+id/LV_WHList"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/TV_WH">
+
+
+    </ListView>
+
+
+    <TextView
+        android:id="@+id/TV_ID"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@id/LV_WHList"
+
+        android:hint="Pantry ID"
+        android:paddingLeft="10dp"
+        android:textSize="22dp"
+        android:gravity="center"
+
+        android:background="@drawable/round_border"/>
+
+    <Button
+        android:id="@+id/bAddWH"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/TV_ID"
+
+        android:text="New Pantry"/>
+</RelativeLayout>

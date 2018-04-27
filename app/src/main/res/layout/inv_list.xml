@@ -6,5 +6,16 @@
     <TextView
         android:id="@+id/itemTxt"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@drawable/round_border"
+        android:textStyle="bold"
+        android:textSize="30dp"/>
+
 </LinearLayout>
