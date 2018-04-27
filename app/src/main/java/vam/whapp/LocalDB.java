@@ -19,39 +19,51 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final int DATABASE_VERSION = 1;
     private static final String DATABASE_NAME = "localuser.db";
 
-    private static final String TABLE_INV = "inventory";
-    private static final String COLUMN_ITEM = "item";
-    private static final String COLUMN_EXP = "exp";
-    private static final String COLUMN_PRICE = "price";
-    private static final String COLUMN_LOC = "location";
-    private static final String COLUMN_NOTES = "notes";
+    private static String TABLE_USER = "User";
+    private static String COLUMN_USER_ID = "user_id";
+    private static String COLUMN_USER_NAME = "user_name";
+    private static String COLUMN_EMAIL = "email";
+    private static String COLUMN_PHONE = "phone";
+    private static String COLUMN_PWORD = "password";
 
-    private static final String TABLE_LU = "lookup";
-    private static final String COLUMN_LUITEM = "lu_item";
-    private static final String COLUMN_LUEXP = "lu_exp";
-    private static final String COLUMN_LUPRICE = "lu_price";
-    private static final String COLUMN_LULOC = "lu_location";
-    private static final String COLUMN_LUNOTES = "lu_notes";
+    private static String TABLE_ITEM = "Item";
+    private static String COLUMN_ITEM_ID = "item_id";
+    private static String COLUMN_ITEM_NAME = "item_name";
+    private static String COLUMN_PRICE = "price";
+    private static String COLUMN_EXP = "exp date";
+    private static String COLUMN_QTY = "quantity";
+    private static String COLUMN_LOC = "location";
+    private static String COLUMN_NOTES = "notes";
 
-    private static final String TABLE_WH = "warehouses";
-    private static final String COLUMN_ID = "id";
-    private static final String COLUMN_OWNER = "owner";
-    private static final String COLUMN_MEMBERS = "members";
+    private static String TABLE_INV = "Inventory";
+    private static String COLUMN_INV_ID = "inv_id";
+    private static String COLUMN_TITLE = "title";
+    private static String COLUMN_FK_ITEM_ID = "fk_item_id";
 
-    private static final String TABLE_USER = "user";
-    private static final String COLUMN_EMAIL = "email";
-    private static final String COLUMN_PWORD = "password";
-    private static final String COLUMN_PHONE = "phone";
+    private static String TABLE_WH = "Warehouse";
+    private static String COLUMN_WH_ID = "warehouse_id";
+    private static String COLUMN_FK_INV_ID = "fk_inv_id";
+    private static String COLUMN_FK_TITLE = "fk_title";
+    private static String COLUMN_FK_USER_ID = "fk_user_id";
+
+
 
     SQLiteDatabase db;
 
-    private static final String CREATE_TABLE_ITEM = "create table inventory (item text primary key not null, exp text not null, price text not null, location text not null, notes text)" ;
+    private static final String CREATE_TABLE_USER = "create table User (user_id text primary key not null, user_name text not null, email text not null, phone text, password text not null)";
+    private static final String CREATE_TABLE_ITEM = "create table Item (item_id text primary key not null, item_name text not null, price text not null, exp date text, quantity text, location text, notes text)";
+    private static final String CREATE_TABLE_INV = "create table Inventory (inv_id text primary key not null, title text not null, foreign key(fk_item_id) references Item(item_id))";
+    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_id text primary key not null, foreign key(fk_inv_id) references Inventory(inv_id), foreign key(fk_title) references Inventory(title), foreign key(fk_user_id) references User(user_id))";
 
-    private static final String CREATE_TABLE_LU = "create table lookup (item text primary key not null, exp text not null, price text not null, location text not null, notes text)";
 
-    private static final String CREATE_TABLE_WH = "create table warehouses (id text primary key not null, owner text not null, members text)";
 
-    private static final String CREATE_TABLE_USER = "create table user (email text primary key not null, password text not null, phone text not null)";
+//    private static final String CREATE_TABLE_ITEM = "create table inventory (item text primary key not null, exp text not null, price text not null, location text not null, notes text)" ;
+
+//    private static final String CREATE_TABLE_LU = "create table lookup (item text primary key not null, exp text not null, price text not null, location text not null, notes text)";
+
+ //   private static final String CREATE_TABLE_WH = "create table warehouses (id text primary key not null, owner text not null, members text)";
+
+//    private static final String CREATE_TABLE_USER = "create table user (email text primary key not null, password text not null, phone text not null)";
 
 
 
@@ -59,6 +71,20 @@ public class LocalDB extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+
+    void insertUser(User u){
+
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_USER_ID, u.getID());
+        values.put(COLUMN_USER_NAME, u.getName());
+        values.put(COLUMN_EMAIL, u.getEmail());
+        values.put(COLUMN_PHONE, u.getPhone());
+        values.put(COLUMN_PWORD, u.getPword());
+
+        db.insert(TABLE_USER, null, values);
+        db.close();
+    }
 
 
     void insertUser(User u){
@@ -75,23 +101,62 @@ public class LocalDB extends SQLiteOpenHelper{
     }
 
 
-    void insertItem(Item i){
-
-        Log.d("InDB", "In DB, congrats");
-        String output = (i.getName() + " " + i.getExp() + " " + i.getPrice() + " " + i.getLoc() + " " + i.getNotes());
-        Log.d("DBTag", output);
+    void insertItem2(Item i){
 
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_ITEM, i.getName());
-        values.put(COLUMN_EXP, i.getExp());
+        values.put(COLUMN_ITEM_ID, i.getID());
+        values.put(COLUMN_ITEM_NAME, i.getName());
         values.put(COLUMN_PRICE, i.getPrice());
+        values.put(COLUMN_EXP, i.getExp());
+        values.put(COLUMN_QTY, i.getQty());
         values.put(COLUMN_LOC, i.getLoc());
         values.put(COLUMN_NOTES, i.getNotes());
 
-        db.insert(TABLE_INV, null, values);
+        db.insert(TABLE_ITEM, null, values);
         db.close();
     }
+
+//    void insertItem(Item i){
+//
+//        Log.d("InDB", "In DB, congrats");
+//        String output = (i.getName() + " " + i.getExp() + " " + i.getPrice() + " " + i.getLoc() + " " + i.getNotes());
+//        Log.d("DBTag", output);
+//
+//        db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COLUMN_ITEM, i.getName());
+//        values.put(COLUMN_EXP, i.getExp());
+//        values.put(COLUMN_PRICE, i.getPrice());
+//        values.put(COLUMN_LOC, i.getLoc());
+//        values.put(COLUMN_NOTES, i.getNotes());
+//
+//        db.insert(TABLE_INV, null, values);
+//        db.close();
+//    }
+
+
+    void insertInv(Inventory i){
+
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_INV_ID, i.getID());
+        values.put(COLUMN_TITLE, i.getTitle());
+        //add items in Inventory class
+
+        db.insert(TABLE_INV, null values);
+    }
+
+
+    void insertWH(Warehouse w){
+
+        db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_WH_ID, i.getID());
+        //add
+    }
+
+
 
 
     ArrayList<String> getInv(){
