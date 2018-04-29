@@ -50,10 +50,10 @@ public class LocalDB extends SQLiteOpenHelper{
 
     SQLiteDatabase db;
 
-    private static final String CREATE_TABLE_USER = "create table User (user_id text primary key not null, user_name text not null, email text not null, phone text, password text not null)";
-    private static final String CREATE_TABLE_ITEM = "create table Item (item_id text primary key not null, item_name text not null, price text not null, exp date text, quantity text, location text, notes text)";
-    private static final String CREATE_TABLE_INV = "create table Inventory (inv_id text primary key not null, title text not null, foreign key(fk_item_id) references Item(item_id))";
-    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_id text primary key not null, foreign key(fk_inv_id) references Inventory(inv_id), foreign key(fk_title) references Inventory(title), foreign key(fk_user_id) references User(user_id))";
+    private static final String CREATE_TABLE_USER = "create table User (user_id text primary key autoincrement, user_name text not null, email text not null, phone text, password text not null)";
+    private static final String CREATE_TABLE_ITEM = "create table Item (item_id text primary key autoincrement, item_name text not null, price text not null, exp date text, quantity text, location text, notes text)";
+    private static final String CREATE_TABLE_INV = "create table Inventory (inv_id text primary key autoincrement, title text not null, foreign key(fk_item_id) references Item(item_id))";
+    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_id text primary key autoincrement, foreign key(fk_inv_id) references Inventory(inv_id), foreign key(fk_title) references Inventory(title), foreign key(fk_user_id) references User(user_id))";
 
 
 

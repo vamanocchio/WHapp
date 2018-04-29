@@ -6,14 +6,15 @@ package vam.whapp;
 
 public class Item {
 
+    private long id;
     private String name;
-    private String exp;
-    private String price;
+    private int exp; //days until exp
+    private int qty;
+    private float price;
     private String loc;
     private String notes;
-    //item id if nec.
 
-    public Item(String name, String exp, String price, String loc, String notes){
+    public Item(String name, int exp, int qty, float price, String loc, String notes){
         this.name = name;
         this.exp = exp;
         this.price = price;
@@ -21,15 +22,35 @@ public class Item {
         this.notes = notes;
     }
 
+    void setID(long id){ this.id = id; }
+
+    void setName(String name){ this.name = name; }
+
+    void setExp(int exp){ this.exp = exp; }
+
+    void setQty(int qty){ this.qty = qty; }
+
+    void setPrice(float price){ this.price = price; }
+
+    void setLoc(String loc){ this.loc = loc; }
+
+    void setNotes(String notes){ this.notes = notes; }
+
+
+
+    long getID(){ return this.id; }
+
     String getName(){
         return this.name;
     }
 
-    String getExp(){
+    int getExp(){
         return this.exp;
     }
 
-    String getPrice(){ return this.price; }
+    int getQty(){ return this.qty; }
+
+    float getPrice(){ return this.price; }
 
     String getLoc(){
         return this.loc;
