@@ -36,14 +36,15 @@ public class LocalDB extends SQLiteOpenHelper{
     private static String COLUMN_NOTES = "notes";
 
     private static String TABLE_INV = "Inventory";
-    private static String COLUMN_INV_ID = "inv_id";
-    private static String COLUMN_TITLE = "title";
+    private static String COLUMN_INV_NUM = "inv_num"; //pk
+    private static String COLUMN_FK_wh_ID = "inv_id";
+    private static String COLUMN_FK_TITLE = "fk_title";
     private static String COLUMN_FK_ITEM_ID = "fk_item_id";
 
     private static String TABLE_WH = "Warehouse";
     private static String COLUMN_WH_ID = "warehouse_id";
-    private static String COLUMN_FK_INV_ID = "fk_inv_id";
-    private static String COLUMN_FK_TITLE = "fk_title";
+//    private static String COLUMN_FK_INV_ID = "fk_inv_id";
+    private static String COLUMN_TITLE = "title";
     private static String COLUMN_FK_USER_ID = "fk_user_id";
 
 
@@ -53,7 +54,7 @@ public class LocalDB extends SQLiteOpenHelper{
     private static final String CREATE_TABLE_USER = "create table User (user_id text primary key autoincrement, user_name text not null, email text not null, phone text, password text not null)";
     private static final String CREATE_TABLE_ITEM = "create table Item (item_id text primary key autoincrement, item_name text not null, price text not null, exp date text, quantity text, location text, notes text)";
     private static final String CREATE_TABLE_INV = "create table Inventory (inv_id text primary key autoincrement, title text not null, foreign key(fk_item_id) references Item(item_id))";
-    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_id text primary key autoincrement, foreign key(fk_inv_id) references Inventory(inv_id), foreign key(fk_title) references Inventory(title), foreign key(fk_user_id) references User(user_id))";
+    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_id text primary key autoincrement, foreign key(fk_title) references Inventory(title), foreign key(fk_user_id) references User(user_id))";
 
 
 
@@ -146,15 +147,16 @@ public class LocalDB extends SQLiteOpenHelper{
         values.put(COLUMN_TITLE, i.getTitle());
         //add items in Inventory class
 
-        db.insert(TABLE_INV, null values);
+        db.insert(TABLE_INV, null, values);
     }
 
 
-    void insertWH(Warehouse w){
+    long insertWH(String title, long user_id){
 
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_WH_ID, i.getID());
+        //values.put(COLUMN_WH_ID, i.getID());
+        values.put(COLUMN_TITLE, title);
         //add
     }
 

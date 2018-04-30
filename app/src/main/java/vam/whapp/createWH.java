@@ -27,11 +27,13 @@ public class createWH extends Activity{
             EditText wh_title = (EditText)findViewById(R.id.TF_create_WH);
 
             String title_str = wh_title.getText().toString();
+            long curr_user = ((GlobalVar) this.getApplication()).getUser();
+            long wh_id = insertWH(title_str, curr_user);
             //TODO ALL DISH SHIII ---------------------------------------------------------!!
             //long curr_user = ((GlobalVar) this.getApplication()).getUser();
             //long wh_id = insertWH(title_str, curr_user);
 
-            //Inventory will now insert records by grabing the curr_wh_id and passing a tuple (or item)
+            //Inventory will now insert records by grabbing the curr_wh_id and passing a tuple (or item)
             //of shit to be entered into the database
             //Inventory will be populated by querying TABLE_INV for foreign key equalling curr_wh_id
             //YAAAAAAAAAAAY ;-;
