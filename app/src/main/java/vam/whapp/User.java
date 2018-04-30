@@ -6,14 +6,15 @@ package vam.whapp;
 
 public class User {
 
+    private String name;
     private String email;
     private String pword;
     private String phone;
 //    private long id;
 
-    public User(String email,  String phone){
+    public User(String name, String pword, String email,  String phone){
         this.email = email;
-//        this.pword = pword;
+        this.pword = pword;
         this.phone = phone;
 //        this.id = genId(); //for later -> user identification in server
     }
@@ -23,20 +24,27 @@ public class User {
         return id;
     }*/
 
+    void setName(String name) { this.name = name; }
+
     void setPword(String pword){
         this.pword = pword;
     }
 
-    private void setPhone(String newphone){
-        this.pword = newphone;
+    void setEmail(String email) { this.eamil = email; }
+
+    void setPhone(String phone){
+        this.pword = phone;
+    }
+
+
+    String getName() { return this.name; }
+
+    String getPword(){
+        return this.pword;
     }
 
     String getEmail(){
         return this.email;
-    }
-
-    String getPword(){
-        return this.pword;
     }
 
     String getPhone(){

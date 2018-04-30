@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/tv_create_wh"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+
+        android:gravity="center_horizontal"
+        android:text="Create new Pantry"
+        android:textSize="28dp"/>
+
+    <EditText
+        android:id="@+id/TF_create_WH"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_below="@id/tv_create_wh"
+
+        android:hint="Pantry Name"
+        android:textSize="28dp"
+        android:gravity="center"
+        android:background="@drawable/round_border"/>
+
+    <Button
+        android:id="@+id/b_OK_CREATE_WH"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/TF_create_WH"
+
+        android:onClick="onCreateClick"
+        android:text="Ok"
+        android:textSize="18dp"/>
+
+    <Button
+        android:id="@+id/b_CANCEL_CREATE_WH"
+        android:layout_width="110dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/b_OK_CREATE_WH"
+
+        android:onClick="onCreateClick"
+        android:text="Cancel"
+        android:textSize="16dp"/>
+
+</RelativeLayout>

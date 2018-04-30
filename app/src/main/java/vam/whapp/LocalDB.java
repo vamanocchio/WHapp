@@ -72,33 +72,35 @@ public class LocalDB extends SQLiteOpenHelper{
     }
 
 
-    void insertUser(User u){
+    long insertUser(User u){
 
         db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(COLUMN_USER_ID, u.getID());
+//        values.put(COLUMN_USER_ID, u.getID());
         values.put(COLUMN_USER_NAME, u.getName());
         values.put(COLUMN_EMAIL, u.getEmail());
         values.put(COLUMN_PHONE, u.getPhone());
         values.put(COLUMN_PWORD, u.getPword());
 
-        db.insert(TABLE_USER, null, values);
+        long id = db.insert(TABLE_USER, null, values);
         db.close();
+        return id;
     }
 
 
-    void insertUser(User u){
+//    long insertUser(User u){
 
-        db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put(COLUMN_EMAIL, u.getEmail());
-        values.put(COLUMN_PWORD, u.getPword());
-        values.put(COLUMN_PHONE, u.getPhone());
+ //       db = this.getWritableDatabase();
+//        ContentValues values = new ContentValues();
+//        values.put(COLUMN_EMAIL, u.getEmail());
+//        values.put(COLUMN_PWORD, u.getPword());
+//        values.put(COLUMN_PHONE, u.getPhone());
 //        values.put(COLUMN_ID, u.getId());
 
-        db.insert(TABLE_USER, null, values);
-        db.close();
-    }
+//        long id = db.insert(TABLE_USER, null, values);
+//        db.close();
+//        return id;
+//    }
 
 
     void insertItem2(Item i){

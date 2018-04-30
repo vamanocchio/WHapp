@@ -3,6 +3,7 @@ package vam.whapp;
 /**
  * Created by victoria on 3/29/18.
  */
+import org.javatuples.*;
 
 public class Item {
 
