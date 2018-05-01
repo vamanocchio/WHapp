@@ -40,16 +40,6 @@
         android:text="Ok"
         android:textSize="18dp"/>
 
-    <Button
-        android:id="@+id/b_CANCEL_CREATE_WH"
-        android:layout_width="110dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="20dp"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@id/b_OK_CREATE_WH"
 
-        android:onClick="onCreateClick"
-        android:text="Cancel"
-        android:textSize="16dp"/>
 
 </RelativeLayout>

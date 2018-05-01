@@ -1,6 +1,7 @@
 package vam.whapp;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
@@ -28,7 +29,12 @@ public class createWH extends Activity{
 
             String title_str = wh_title.getText().toString();
             long curr_user = ((GlobalVar) this.getApplication()).getUser();
-            long wh_id = insertWH(title_str, curr_user);
+            String wh_id = db.insertWH(title_str, curr_user);
+
+            ((GlobalVar) this.getApplication()).setWH(wh_id);
+
+            Intent i = new Intent(createWH.this, home.class);
+            startActivity(i);
             //TODO ALL DISH SHIII ---------------------------------------------------------!!
             //long curr_user = ((GlobalVar) this.getApplication()).getUser();
             //long wh_id = insertWH(title_str, curr_user);
@@ -39,9 +45,6 @@ public class createWH extends Activity{
             //YAAAAAAAAAAAY ;-;
         }
 
-        if(v.getId() == R.id.b_CANCEL_CREATE_WH){
-
-        }
 
     }
 

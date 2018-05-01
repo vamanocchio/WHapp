@@ -30,7 +30,7 @@ public class User {
         this.pword = pword;
     }
 
-    void setEmail(String email) { this.eamil = email; }
+    void setEmail(String email) { this.email = email; }
 
     void setPhone(String phone){
         this.pword = phone;

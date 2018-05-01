@@ -24,11 +24,14 @@ public class WH extends Activity {
     ListView listView;
     String item;
     LocalDB db = new LocalDB(this);
+    long curr_user = ((GlobalVar) this.getApplication()).getUser();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wh);
+
+
 
         listView = (ListView) findViewById(R.id.InvList);
         arrayList = db.getWarehouses();
@@ -42,10 +45,12 @@ public class WH extends Activity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
+
                 String title = (String)listView.getItemAtPosition(position);
-                String id_str = db.getWH_ID(title);
+                String wh_id = db.getWH_ID(title, curr_user);
                 Intent i = new Intent (WH.this, ViewWH.class);
-                i.putExtra("WH_ID", id_str);
+                i.putExtra("WH_title", title);
+                i.putExtra("WH_ID", wh_id);
                 startActivity(i);
             }
         });

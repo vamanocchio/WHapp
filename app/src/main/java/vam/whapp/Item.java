@@ -15,7 +15,7 @@ public class Item {
     private String loc;
     private String notes;
 
-    public Item(String name, int exp, int qty, float price, String loc, String notes){
+    public Item(String name, float price, int exp, int qty, String loc, String notes){
         this.name = name;
         this.exp = exp;
         this.price = price;

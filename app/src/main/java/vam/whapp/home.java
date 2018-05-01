@@ -45,7 +45,7 @@ public class home extends AppCompatActivity {
 
         //NAV BAR
 
-        setup();
+        //setup();
 
 
 
@@ -85,18 +85,18 @@ public class home extends AppCompatActivity {
 
     }
 
-    private void setup(){
-
-        alarmMgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
-        Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
-        alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
-
-        Calendar cal = Calendar.getInstance();
-        cal.setTimeInMillis(System.currentTimeMillis());
-        cal.set(Calendar.HOUR_OF_DAY, 12); //default alarm daily at noon
-
-        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60 * 20, alarmIntent);
-
-    }
+//    private void setup(){
+//
+//        alarmMgr = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
+//        Intent intent = new Intent(getApplicationContext(), NotificationReceiver.class);
+//        alarmIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+//
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTimeInMillis(System.currentTimeMillis());
+//        cal.set(Calendar.HOUR_OF_DAY, 12); //default alarm daily at noon
+//
+//        alarmMgr.setRepeating(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), 1000 * 60 * 20, alarmIntent);
+//
+//    }
 
 }

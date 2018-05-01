@@ -7,6 +7,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.javatuples.Quartet;
+
 /**
  * Created by victoria on 3/29/18.
  */
@@ -38,7 +40,7 @@ public class Signup extends Activity {
                 String strphone = phone.getText().toString();
 
                 //TODO CHANGE TO TUPLE--------------------------------------!!
-                User u = new User(strname, strpword, stremail, strphone);
+                Quartet<String, String, String, String> u = new Quartet<>(strname, strpword, stremail, strphone);
 //                u.setPword(strpword);
                 long id = helper.insertUser(u);
 

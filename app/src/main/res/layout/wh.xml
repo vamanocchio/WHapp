@@ -48,5 +48,16 @@
         android:layout_toRightOf="@+id/bWHReturn"
         android:text="My Pantries" />
 
+    <Button
+        android:id="@+id/bCreate_WH"
+        android:layout_width="160dp"
+        android:layout_height="80dp"
+        android:layout_below="@+id/WHList"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="6dp"
+
+        android:text="Add new pantry"
+        android:textSize="16dp"/>
+
 
 </RelativeLayout>

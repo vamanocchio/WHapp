@@ -9,12 +9,12 @@ import android.app.Application;
 public class GlobalVar extends Application {
 
     private long curr_user;
-    private long curr_wh;
+    private String curr_wh;
     private long curr_inv;
 
     public void setUser(long user){ this.curr_user = user; }
 
-    public void setWH(long wh){
+    public void setWH(String wh){
         this.curr_wh = wh;
         //this.curr_inv = wh.getFKInvID;
     }
@@ -24,7 +24,7 @@ public class GlobalVar extends Application {
 
     public long getUser(){ return this.curr_user; }
 
-    public long getWH(){ return this.curr_wh; }
+    public String getWH(){ return this.curr_wh; }
 
     public long getInv(){ return this.curr_inv; }
 
