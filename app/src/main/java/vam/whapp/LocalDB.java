@@ -60,9 +60,15 @@ public class LocalDB extends SQLiteOpenHelper{
     SQLiteDatabase db;
 
     private static final String CREATE_TABLE_USER = "create table User (user_id integer primary key autoincrement, user_name text not null, password text not null , email text not null, phone text)";
+
     private static final String CREATE_TABLE_ITEM = "create table Item (item_id integer primary key autoincrement, item_name text not null, price real not null, exp_date integer, quantity integer, location text, notes text)";
-    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_num integer primary key autoincrement, wh_id text unique not null, wh_title text not null, foreign key(fk_user_id) references User(user_id))";
-    private static final String CREATE_TABLE_INV = "create table Inventory (inv_num integer primary key autoincrement, foreign key(fk_wh_id) references Warehouse(wh_id), foreign key(fk_wh_title) references Warehouse(wh_title), foreign key(fk_item_id) references Item(item_id))";
+
+    private static final String CREATE_TABLE_WH = "create table Warehouse (warehouse_num integer primary key autoincrement, wh_id text unique not null, wh_title text not null, fk_user_id integer, foreign key (fk_user_id) references User(user_id))";
+
+   // private static final String CREATE_TABLE_INV = "create table Inventory (inv_num integer primary key autoincrement, fk_wh_id text not null, foreign key (fk_wh_id) references Warehouse(wh_id), fk_wh_title text not null, foreign key (fk_wh_title) references Warehouse(wh_title), fk_item_id integer not null, foreign key (fk_item_id) references Item(item_id))";
+
+    private static final String CREATE_TABLE_INV = "create table Inventory (inv_num integer primary key autoincrement, fk_wh_id text not null, fk_wh_title text not null, fk_item_id integer not null, foreign key (fk_item_id) references Item(item_id), foreign key (fk_wh_id) references Warehouse(wh_id), foreign key (fk_wh_title) references Warehouse(wh_title))";
+
 
 
 
@@ -260,7 +266,7 @@ public class LocalDB extends SQLiteOpenHelper{
 
         ArrayList<String> list = new ArrayList<>();
         db = this.getWritableDatabase();
-        Cursor c = db.rawQuery("select Inventory.fk_item_id, Item.item_name from Inventory, Item where Inventory.fk_item_id = Item.item_id and inv.fk_wh_id = wh_id", null);
+        Cursor c = db.rawQuery("select Inventory.fk_item_id, Item.item_name from Inventory, Item where Inventory.fk_item_id = Item.item_id and Inventory.fk_wh_id = \"" + wh_id + "\"", null);
 
         if(c!=null){
             if(c.moveToFirst()){
@@ -372,7 +378,7 @@ public class LocalDB extends SQLiteOpenHelper{
     }
 
     String genID(){
-        return UUID.randomUUID().toString();
+        return UUID.randomUUID().toString().replace("-", "");
     }
 
 
@@ -380,10 +386,11 @@ public class LocalDB extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
 
-        db.execSQL(CREATE_TABLE_ITEM);
-        db.execSQL(CREATE_TABLE_INV);
-        db.execSQL(CREATE_TABLE_WH);
         db.execSQL(CREATE_TABLE_USER);
+        db.execSQL(CREATE_TABLE_ITEM);
+        db.execSQL(CREATE_TABLE_WH);
+        db.execSQL(CREATE_TABLE_INV);
+
         this.db = db;
     }
 

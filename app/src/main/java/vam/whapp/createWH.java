@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 
@@ -31,7 +32,11 @@ public class createWH extends Activity{
             long curr_user = ((GlobalVar) this.getApplication()).getUser();
             String wh_id = db.insertWH(title_str, curr_user);
 
+            System.out.println(wh_id);
+            Log.d("WHTag", "WH_ID: " + wh_id);
             ((GlobalVar) this.getApplication()).setWH(wh_id);
+            String curr_wh = ((GlobalVar) this.getApplication()).getWH();
+            Log.d("Global", "Curr WH " + curr_wh);
 
             Intent i = new Intent(createWH.this, home.class);
             startActivity(i);

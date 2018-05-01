@@ -32,14 +32,16 @@ public class Inventory extends Activity{
     ListView listView;
     String item;
     LocalDB db = new LocalDB(this);
-    String curr_wh = ((GlobalVar) this.getApplication()).getWH();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.inventory);
 
+        String curr_wh = ((GlobalVar) this.getApplication()).getWH();
         //Log.d("InvTag", "In inventory, congrats");
+
 
         listView = (ListView) findViewById(R.id.InvList);
         arrayList = db.getInv(curr_wh);

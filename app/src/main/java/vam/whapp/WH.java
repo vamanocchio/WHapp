@@ -31,7 +31,7 @@ public class WH extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.wh);
 
-
+        final long curr_user = ((GlobalVar) this.getApplication()).getUser();
 
         listView = (ListView) findViewById(R.id.InvList);
         arrayList = db.getWarehouses();
@@ -44,6 +44,7 @@ public class WH extends Activity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
 
 
                 String title = (String)listView.getItemAtPosition(position);

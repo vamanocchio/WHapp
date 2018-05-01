@@ -54,7 +54,7 @@ public class Signup extends Activity {
 
 
 
-                Intent i = new Intent(Signup.this, home.class);
+                Intent i = new Intent(Signup.this, createWH.class);
                 startActivity(i);
             }else{
 

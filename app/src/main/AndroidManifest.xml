@@ -25,6 +25,7 @@
         <activity android:name=".AddItem"/>
         <activity android:name=".AddShop"/>
         <activity android:name=".Signup"/>
+        <activity android:name=".createWH"/>
 
     </application>
 

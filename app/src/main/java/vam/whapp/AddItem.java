@@ -17,20 +17,26 @@ import android.widget.Toast;
 public class AddItem extends Activity {
 
     LocalDB db = new LocalDB(this);
-    String item_str;
-    String curr_wh = ((GlobalVar) this.getApplication()).getWH();
+    String item_str, curr_wh;
+   // GlobalVar data;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_item);
 
+        //data = (GlobalVar)getApplication();
+        String curr_wh = ((GlobalVar) this.getApplication()).getWH();
+        //String curr_wh = ((GlobalVar) this.getApplication()).getWH();
+
     }
 
 
     void onAddConfirmClick(View v){
 
+        //curr_wh = data.getWH();
 
+        //Log.d("AddItem", curr_wh);
         EditText item = (EditText)findViewById(R.id.TFaddItem);
             EditText exp = (EditText)findViewById(R.id.TFaddExp);
             EditText qty = (EditText)findViewById(R.id.TFaddQty);
